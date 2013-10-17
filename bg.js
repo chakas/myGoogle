@@ -6,8 +6,18 @@ $(document).ready(function(){
 		$('canvas#hplogoc').remove();
 		$("#hplogo").text("");
 		chrome.storage.local.get('imgHexaData',function(data){
-    		$("#hplogo").css('background-image', 'url(' + data['imgHexaData'] + ')');
-    		$("#hplogo").css('background-size',"360px 90px");
+		
+		//In google.com there is no div tag where as in the india domain we have div tag	
+		if($("#hplogo")[0].tagName == 'IMG'){
+		
+			$("#hplogo").attr('src',data['imgHexaData']);
+		}
+		else if($("#hplogo")[0].tagName == 'DIV'){
+        		$("#hplogo").css('background-image', 'url(' + data['imgHexaData'] + ')');
+            		$("#hplogo").css('background-size', "360px 90px");
+		}
+    	//	$("#hplogo").css('background-image', 'url(' + data['imgHexaData'] + ')');
+    	//	$("#hplogo").css('background-size',"360px 90px");
     	});
 	}
 });
