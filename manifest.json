@@ -1,8 +1,11 @@
 {
   "manifest_version": 2,
-  "name": "mygoogle",
-  "description": "Use your fav image as google image...",
+  "name": "myGoogle",
+  "description": "Use your your name as google image...",
   "version": "1.0",
+   "icons": { 
+        "48": "icon_48.png"
+    },
   "content_scripts":[
     {
       "matches" : ["<all_urls>"],
