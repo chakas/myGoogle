@@ -5,6 +5,12 @@ var y = 10;
 var lastNum = 0;
 var arr_color = ['#3369E8', '#D50F25', '#EEB211', '#009925'];
 var is3d=false;
+
+//this function is used for saving the user choice to display logo
+function toggling(usrval){
+chrome.storage.local.set({'overwrite':usrval},function(){console.log('overwrite is saved')});	
+}
+
 //function to redraw google image in Canvas
 function drawCanvas(pos, text) {
     var indx = (pos / 4).toString();
@@ -55,6 +61,7 @@ imgEl.addEventListener('click', function () {
     }, function () {
         // Notify that we saved.
         $('#status').text("Image Saved!!!").fadeIn('slow').delay(3000).fadeOut('slow');
+        toggling(false);
     });
 
 
@@ -85,6 +92,9 @@ prvwEl.addEventListener('click', function () {
        context.shadowOffsetY = textDepth + 2;
        context.fillText(text, x - n, y - n);
 }
+
 $('#checkbox').change(function(){
     is3d = this.checked ? true : false;
+    toggling(is3d);
+    
 });
