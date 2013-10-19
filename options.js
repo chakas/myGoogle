@@ -53,7 +53,7 @@ el.addEventListener('click', function () {
     }
     else{
             $("#imgBtn").hide();
-            alert("No of characters should be less than nine");       
+            alert("No of characters should be less than nine \n and more than zero");       
     }
 });
 
@@ -112,13 +112,13 @@ $('#reverting').change(function(){
 });
 
 chrome.storage.local.get('overwrite',function(data){
-	if(data['overwrite'] != undefined){
-	$('#reverting').prop('checked',data['overwrite']);
-	}
+        if(data['overwrite'] != undefined){
+        $('#reverting').prop('checked',data['overwrite']);
+        }
 });
 
 chrome.storage.local.get('imgHexaData',function(data){
-	if(data['imgHexaData'] != undefined){
-	$('#prevBtn').trigger('click');
-	}
-})
+        if(data['imgHexaData'] != undefined){
+        $('#prevBtn').trigger('click');
+        }
+});
