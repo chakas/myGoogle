@@ -104,6 +104,16 @@ prvwEl.addEventListener('click', function () {
 
 $('#checkbox').change(function(){
     is3d = this.checked ? true : false;
-    toggling(is3d);
-    
+    //toggling(is3d);
+});
+
+$('#reverting').change(function(){
+    overWriteGoogle = this.checked ? "true" : "false";
+    console.log(overWriteGoogle);
+    chrome.storage.local.set({
+        'overwrite': overWriteGoogle
+    }, function () {
+        // Notify that we saved.
+        $('#status').text("Image Overwritten!!!").fadeIn('slow').delay(3000).fadeOut('slow');
+    });
 });
