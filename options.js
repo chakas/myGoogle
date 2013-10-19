@@ -4,13 +4,9 @@ var x = 5;
 var y = 10;
 var lastNum = 0;
 var arr_color = ['#3369E8', '#D50F25', '#EEB211', '#009925'];
+var overWriteGoogle="false";
+//For future implementation
 var is3d=false;
-
-//this function is used for saving the user choice to display logo
-function toggling(usrval){
-chrome.storage.local.set({'overwrite':usrval},function(){console.log('overwrite is saved')});	
-}
-
 //function to redraw google image in Canvas
 function drawCanvas(pos, text) {
     var indx = (pos / 4).toString();
@@ -42,7 +38,8 @@ var el = document.getElementById("usrBtn");
 el.addEventListener('click', function () {
     //console.log($("#usrTxt").val());
     var data = $("#usrTxt").val();
-    data.trim(/^\s+|\s+$/g,'');
+    data = $.trim(data);
+    console.log(data.length);
     if(data.length > 0 && data.length < 9){
             var datArr = data.split('');
             ctx.clearRect(0, 0, 700, 700);
@@ -56,10 +53,8 @@ el.addEventListener('click', function () {
     }
     else{
             $("#imgBtn").hide();
-                alert("No of characters should be less than nine");
-            
+            alert("No of characters should be less than nine");       
     }
-
 });
 
 var imgEl = document.getElementById("imgBtn");
@@ -70,7 +65,6 @@ imgEl.addEventListener('click', function () {
     }, function () {
         // Notify that we saved.
         $('#status').text("Image Saved!!!").fadeIn('slow').delay(3000).fadeOut('slow');
-        //toggling(false);
     });
 
 
@@ -80,16 +74,16 @@ imgEl.addEventListener('click', function () {
 var prvwEl = document.getElementById("prevBtn");
 prvwEl.addEventListener('click', function () {
     chrome.storage.local.get('imgHexaData' , function (imgdata) {
-    	ctx.clearRect(0, 0, 700, 700);
-    	var image = new Image();
-		image.src = imgdata.imgHexaData;
-		image.onload = function() {
-    		ctx.drawImage(image, 5, 10);
-		};
+        ctx.clearRect(0, 0, 700, 700);
+        var image = new Image();
+        image.src = imgdata.imgHexaData;
+        image.onload = function() {
+            ctx.drawImage(image, 5, 10);
+        };
     });
 });
 
- function draw3dText(context, text, x, y, textDepth){
+function draw3dText(context, text, x, y, textDepth){
         var n;
         for (n = 0; n < textDepth; n++) {
            context.fillText(text, x - n, y - n);
@@ -104,11 +98,10 @@ prvwEl.addEventListener('click', function () {
 
 $('#checkbox').change(function(){
     is3d = this.checked ? true : false;
-    //toggling(is3d);
 });
 
 $('#reverting').change(function(){
-    overWriteGoogle = this.checked ? "true" : "false";
+    overWriteGoogle = this.checked;
     console.log(overWriteGoogle);
     chrome.storage.local.set({
         'overwrite': overWriteGoogle
