@@ -4,6 +4,7 @@ var x = 5;
 var y = 10;
 var lastNum = 0;
 var arr_color = ['#3369E8', '#D50F25', '#EEB211', '#009925'];
+var is3d=false;
 //function to redraw google image in Canvas
 function drawCanvas(pos, text) {
     var indx = (pos / 4).toString();
@@ -70,4 +71,20 @@ prvwEl.addEventListener('click', function () {
     		ctx.drawImage(image, 5, 10);
 		};
     });
+});
+
+ function draw3dText(context, text, x, y, textDepth){
+        var n;
+        for (n = 0; n < textDepth; n++) {
+           context.fillText(text, x - n, y - n);
+        }
+       context.fillStyle = "#5E97FF";
+       context.shadowColor = "black";
+       context.shadowBlur = 10;
+       context.shadowOffsetX = textDepth + 2;
+       context.shadowOffsetY = textDepth + 2;
+       context.fillText(text, x - n, y - n);
+}
+$('#checkbox').change(function(){
+    is3d = this.checked ? true : false;
 });
