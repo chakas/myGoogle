@@ -110,3 +110,15 @@ $('#reverting').change(function(){
         $('#status').text("Image Overwritten!!!").fadeIn('slow').delay(3000).fadeOut('slow');
     });
 });
+
+chrome.storage.local.get('overwrite',function(data){
+	if(data['overwrite'] != undefined){
+	$('#reverting').prop('checked',data['overwrite']);
+	}
+});
+
+chrome.storage.local.get('imgHexaData',function(data){
+	if(data['imgHexaData'] != undefined){
+	$('#prevBtn').trigger('click');
+	}
+})
