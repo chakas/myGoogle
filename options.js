@@ -53,7 +53,7 @@ el.addEventListener('click', function () {
     }
     else{
             $("#imgBtn").hide();
-            alert("No of characters should be less than nine \n and more than zero");       
+            alert("No of characters should be less than eight\nand more than zero");       
     }
 });
 
