@@ -70,7 +70,7 @@ imgEl.addEventListener('click', function () {
     }, function () {
         // Notify that we saved.
         $('#status').text("Image Saved!!!").fadeIn('slow').delay(3000).fadeOut('slow');
-        toggling(false);
+        //toggling(false);
     });
 
 
