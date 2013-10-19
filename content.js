@@ -16,7 +16,7 @@ $(document).ready(function(){
                         $("#hplogo").attr('src', data['imgHexaData']);
                         $("#hplogo").css('background-size', "360px");
                         $("#hplogo").css('height', "120px");
-                        $("#hplogo").css('height', "360px");
+                        $("#hplogo").css('width', "360px");
                     } else if ($("#hplogo")[0].tagName == 'DIV') {
                         $("#hplogo").css('background-image', 'url(' + data['imgHexaData'] + ')');
                         $("#hplogo").css('background-size', "360px");
