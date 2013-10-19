@@ -16,7 +16,8 @@ $(document).ready(function(){
                     } else if ($("#hplogo")[0].tagName == 'DIV') {
                         $("#hplogo").css('background-image', 'url(' + data['imgHexaData'] + ')');
                         $("#hplogo").css('background-size', "360px 90px");
-                        $("#hplogo").css('width', "320px");
+                        $("#hplogo").css({'width': "320px",'text-align':'center'});
+                        
                     }
                 });
             }
