@@ -14,13 +14,15 @@ $(document).ready(function(){
                     //In google.com there is no div tag where as in the india domain we have div tag
                    if ($("#hplogo")[0].tagName == 'IMG') {
                         $("#hplogo").attr('src', data['imgHexaData']);
-                        $("#hplogo").css('background-size', "360px");
+                        $("#hplogo").css('background-size', "450px");
                         $("#hplogo").css('height', "120px");
-                        $("#hplogo").css('width', "360px");
+                        $("#hplogo").css('width', "450px");
+                        $("#hplogo").css('margin-left', "150px");
                     } else if ($("#hplogo")[0].tagName == 'DIV') {
                         $("#hplogo").css('background-image', 'url(' + data['imgHexaData'] + ')');
-                        $("#hplogo").css('background-size', "360px");
-                        $("#hplogo").css('width', "360px");
+                        $("#hplogo").css('background-size', "450px");
+                        $("#hplogo").css('width', "450px");
+                        $("#hplogo").css('margin-left', "150px");
                         //$("#hplogo").css('background-position-y', "10px");
                     }
                 });
